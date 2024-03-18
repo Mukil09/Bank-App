@@ -1,14 +1,39 @@
-import React from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { features } from "../Constants/Main";
 import styles, { layout } from "../style";
 import Button from "./Button";
 
 function FeatureCard({ icon, title, content, index }) {
+  const [isVisible, setIsVisible] = useState(false);
+  const cardRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting);
+      },
+      { threshold: 0.5 } // Adjust the threshold as needed
+    );
+
+    if (cardRef.current) {
+      observer.observe(cardRef.current);
+    }
+
+    return () => {
+      if (cardRef.current) {
+        observer.unobserve(cardRef.current);
+      }
+    };
+  }, []);
+
   return (
     <div
+      ref={cardRef}
       className={`flex flex-row p-6 rounded-[20px] ${
-        index !== features.length - 1 ? "mb-6" : "mb-0"
-      } feature-card`}
+        index !== features.length - 1 ? "mb-2" : "mb-0"
+      } feature-card feature-item-right ${
+        isVisible ? "feature-visible-right" : "feature-hidden-right"
+      }`}
     >
       <div
         className={`w-[64px] h-[64px] rounded-full ${styles.flexCenter} bg-dimBlue`}
@@ -43,9 +68,9 @@ function Business() {
         <Button styles="mt-10" />
       </div>
       <div className={`${layout.sectionImg} flex-col`}>
-        {features.map((feature, index) => {
-          return <FeatureCard key={feature.id} {...feature} index={index} />;
-        })}
+        {features.map((feature, index) => (
+          <FeatureCard key={feature.id} {...feature} index={index} />
+        ))}
       </div>
     </section>
   );
