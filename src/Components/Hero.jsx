@@ -2,6 +2,7 @@ import React from "react";
 import styles from "../style";
 import { discount, robot } from "../assets";
 import GetStarted from "./GetStarted";
+import "./Reveal.css";
 
 function Hero() {
   return (
@@ -30,9 +31,11 @@ function Hero() {
             <GetStarted />
           </div>
         </div>
-        <h1 className="font-poppins font-semibold ss:text-[60px] text-[32px] text-white ss:leading-[100px] leading-[75px]w-full">
-          Payment Method.
-        </h1>
+        <div className="type-container">
+          <h1 className="type-text font-poppins font-semibold ss:text-[60px] text-[32px] text-white ss:leading-[100px] leading-[75px]w-full">
+            Payment Method.
+          </h1>
+        </div>
         <p className={`${styles.paragraph} max-w-[472px] mt-5`}>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi
           architecto modi deleniti, aliquid placeat fuga. Cumque aperiam, autem

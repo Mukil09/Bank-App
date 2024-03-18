@@ -1,3 +1,27 @@
+.type-container {
+  display: inline-block;
+}
+
+.type-text {
+  /* border-right: 4px solid white; */
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  animation: typing 2.5s infinite, cursor 0.4s step-end infinite alternate;
+}
+
+@keyframes cursor {
+  50% {
+    border-color: transparent;
+  }
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+}
+
 .stats-item {
   opacity: 0;
   transform: translateY(50px);
