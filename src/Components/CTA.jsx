@@ -4,14 +4,14 @@ import Button from "./Button";
 
 function CTA() {
   const [isVisible, setIsVisible] = useState(false);
-  const [isSectionPassed, setIsSectionPassed] = useState(false); // Added state to track passing
-  const [sectionBuffer, setSectionBuffer] = useState(100); // Buffer zone for smooth scrolling
+  const [isSectionPassed, setIsSectionPassed] = useState(false);
+  const [sectionBuffer, setSectionBuffer] = useState(100);
 
   const handleScroll = () => {
     const ctaSection = document.getElementById("cta-section");
     if (ctaSection) {
       const rect = ctaSection.getBoundingClientRect();
-      const buffer = sectionBuffer; // Use pre-defined buffer
+      const buffer = sectionBuffer;
 
       if (
         rect.top >= 0 &&
@@ -25,7 +25,6 @@ function CTA() {
         rect.top >
           (window.innerHeight || document.documentElement.clientHeight) + buffer
       ) {
-        // Increased check by buffer amount to avoid triggering on quick scrolls
         setIsVisible(false);
         setIsSectionPassed(true);
       }
@@ -36,7 +35,7 @@ function CTA() {
     window.addEventListener("scroll", handleScroll);
 
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [isSectionPassed, sectionBuffer]); // Added sectionBuffer to dependency array
+  }, [isSectionPassed, sectionBuffer]);
 
   return (
     <section

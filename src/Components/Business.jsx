@@ -12,7 +12,7 @@ function FeatureCard({ icon, title, content, index }) {
       ([entry]) => {
         setIsVisible(entry.isIntersecting);
       },
-      { threshold: 0.5 } // Adjust the threshold as needed
+      { threshold: 0.5 }
     );
 
     if (cardRef.current) {

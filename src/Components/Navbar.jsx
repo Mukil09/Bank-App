@@ -6,7 +6,6 @@ function Navbar() {
   let [toggle, setToggle] = useState(false);
 
   const handleLinkClick = () => {
-    // Set toggle to false to hide the menu when a link is clicked
     setToggle(false);
   };
 
@@ -22,7 +21,6 @@ function Navbar() {
               index === navLinks.length - 1 ? "mr-0" : "mr-10"
             }`}
           >
-            {/* Add onClick event to call handleLinkClick */}
             <a href={`#${nav.id}`} onClick={handleLinkClick}>
               {nav.title}
             </a>
@@ -51,7 +49,6 @@ function Navbar() {
                   index === navLinks.length - 1 ? "mr-0" : "mb-4"
                 }`}
               >
-                {/* Add onClick event to call handleLinkClick */}
                 <a href={`#${nav.id}`} onClick={handleLinkClick}>
                   {nav.title}
                 </a>

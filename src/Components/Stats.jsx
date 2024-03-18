@@ -28,7 +28,6 @@ function Stats() {
             (window.innerHeight || document.documentElement.clientHeight) +
               buffer
         ) {
-          // Increased check by buffer amount to avoid triggering on quick scrolls
           setIsVisible(false);
           setIsSectionPassed(true);
         }
@@ -40,7 +39,7 @@ function Stats() {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [isSectionPassed, sectionBuffer]); // Added sectionBuffer to dependency array
+  }, [isSectionPassed, sectionBuffer]);
 
   return (
     <section
