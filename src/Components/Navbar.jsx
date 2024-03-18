@@ -4,6 +4,12 @@ import { navLinks } from "../Constants/Main";
 
 function Navbar() {
   let [toggle, setToggle] = useState(false);
+
+  const handleLinkClick = () => {
+    // Set toggle to false to hide the menu when a link is clicked
+    setToggle(false);
+  };
+
   return (
     <nav className="w-full flex py-6 justify-between items-center navbar">
       <img src={logo} alt="bank" className="w-[124px] h-[32px]" />
@@ -16,7 +22,10 @@ function Navbar() {
               index === navLinks.length - 1 ? "mr-0" : "mr-10"
             }`}
           >
-            <a href={`#${nav.id}`}>{nav.title}</a>
+            {/* Add onClick event to call handleLinkClick */}
+            <a href={`#${nav.id}`} onClick={handleLinkClick}>
+              {nav.title}
+            </a>
           </li>
         ))}
       </ul>
@@ -42,7 +51,10 @@ function Navbar() {
                   index === navLinks.length - 1 ? "mr-0" : "mb-4"
                 }`}
               >
-                <a href={`#${nav.id}`}>{nav.title}</a>
+                {/* Add onClick event to call handleLinkClick */}
+                <a href={`#${nav.id}`} onClick={handleLinkClick}>
+                  {nav.title}
+                </a>
               </li>
             ))}
           </ul>
